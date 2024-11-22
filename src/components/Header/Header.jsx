@@ -12,9 +12,9 @@ import {
   useSearchParams,
 } from "react-router-dom";
 function Header() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams("");
   const [destination, setDestination] = useState(
-    searchParams.get("destination")
+    searchParams.get("destination") ?? ""
   );
   const [openOptions, setOpenOptions] = useState("");
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ function Header() {
       destination,
       options: JSON.stringify(options),
     });
-    // setSearchParams(encodedParams);
+   
     navigate({
       pathname: "/hotels",
       search: encodedParams.toString(),
